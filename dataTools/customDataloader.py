@@ -95,9 +95,7 @@ class customDatasetReader(Dataset):
             # Преобразование DICOM в массив numpy (предполагается изображение в градациях серого)
             image_array = dicom_file.pixel_array
             # Конвертация в PIL Image для дальнейших преобразований
-            tmp = Image.fromarray(image_array).convert('RGB')
-            tmp.save('tmp.png', 'PNG')
-            self.gtImage = Image.open('tmp.png')
+            self.gtImage = Image.fromarray(image_array).convert('RGB')
         else:
             # Для не-DICOM файлов используется стандартная обработка
             self.gtImage = Image.open(self.gtImageFileName)
